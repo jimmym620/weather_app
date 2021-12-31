@@ -6,13 +6,17 @@ function App() {
     const [getLocation, setGetLocation] = useState("london");
     const [location, setLocation] = useState("london");
 
-    const [lat, setLat] = useState([55.8438935]);
-    const [long, setLong] = useState([-4.3922204]);
+    const [lat, setLat] = useState([51.50853]);
+    const [long, setLong] = useState([-0.12574]);
     const days = [0, 1, 2, 3, 4, 5, 6];
+
+    //geocode
+    const [geoApiData, setGeoApiData] = useState({});
 
     const apiKey = process.env.REACT_APP_API_KEY;
     // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
     const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`;
+    const apiUrlGeocode = `http://api.openweathermap.org/geo/1.0/direct?q=${getLocation}&limit=1&appid=${apiKey}`;
     useEffect(() => {
         fetch(apiUrl)
             .then((res) => res.json())
@@ -20,11 +24,18 @@ function App() {
     }, [apiUrl]);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLat(position.coords.latitude);
-            setLong(position.coords.longitude);
-        });
-    }, [lat, long]);
+        fetch(apiUrlGeocode)
+            .then((res) => res.json())
+            .then((data) => setGeoApiData(data));
+    }, [apiUrlGeocode]);
+
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition((position) => {
+    //         setLat(position.coords.latitude);
+    //         setLong(position.coords.longitude);
+    //     });
+
+    // }, [location]);
 
     const handleInput = (e) => {
         e.preventDefault();
@@ -33,8 +44,12 @@ function App() {
 
     const handleSubmit = () => {
         setLocation(getLocation);
-        console.log(lat);
-        console.log(long);
+        getLongLat();
+    };
+
+    const getLongLat = () => {
+        setLat(geoApiData[0].lat);
+        setLong(geoApiData[0].lon);
     };
 
     const kelvinToCelcius = (k) => {
