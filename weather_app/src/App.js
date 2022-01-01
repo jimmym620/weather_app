@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 
 function App() {
     const [apiData, setApiData] = useState({});
-    const [getLocation, setGetLocation] = useState("london");
-    const [location, setLocation] = useState("london");
+    const [getLocation, setGetLocation] = useState("London");
+    const [location, setLocation] = useState("London");
 
     const [lat, setLat] = useState([51.50853]);
     const [long, setLong] = useState([-0.12574]);
@@ -84,7 +84,7 @@ function App() {
                 <div className="current-weather-view">
                     {apiData.current ? (
                         <div className="main-info">
-                            <h1>Current Weather</h1>
+                            <h2>Current Weather</h2>
                             <h3 className="location">{location}</h3>
                             <h4>{apiData.current.weather[0].main}</h4>
                             <img

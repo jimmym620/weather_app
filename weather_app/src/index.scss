@@ -1,3 +1,4 @@
+$phone-width: 250px;
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -11,31 +12,60 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
 }
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0.5rem;
+    padding: 0;
+}
 
-.current-weather-view {
-    display: block;
-    width: 100%;
-    height: 50vh;
-
-    .location {
-        text-transform: capitalize;
-        color: red;
+.form {
+    input {
+        text-align: center;
+        width: min(30vw, 10rem);
     }
 }
 
-.main-info {
-    align-items: center;
+.current-weather-view {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
 
-    height: 20vh;
-
-    p {
-        margin: 0.1rem 0;
+    .location {
+        display: inline;
+        text-transform: capitalize;
+        color: black;
+        padding: 1rem;
+        margin: 0.2rem;
+        border: 0.2rem solid red;
+        border-radius: 0.5rem;
+        width: 20vw;
+        height: 5vh;
     }
-
-    .info-container {
+    .main-info {
         display: flex;
-        gap: 1rem;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        p {
+            margin: 0.1rem 0;
+        }
+
+        img {
+            display: block;
+            height: 30%;
+            width: auto;
+        }
+
+        .info-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
     }
 }
 
@@ -46,9 +76,45 @@ code {
 .week-container {
     display: flex;
     flex-direction: row;
-    width: auto;
+    margin: 2rem 0;
+    justify-content: center;
 
     article {
         outline: 1px solid;
+        margin-top: 1px;
+        margin-left: 1px;
+        width: 12vw;
+    }
+}
+
+@media (min-width: $phone-width) and (max-width: 650px) {
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .location {
+        display: block;
+        padding: 0;
+        margin: 0;
+        height: auto;
+        width: auto;
+    }
+
+    .week-container {
+        display: flex;
+        margin: 1rem 2rem;
+        flex-direction: column;
+        justify-content: space-evenly;
+        p {
+            margin: 0.2rem;
+            padding: 0;
+        }
+        article {
+            width: 100%;
+            height: 30vh;
+        }
     }
 }
