@@ -16,7 +16,7 @@ function App() {
     const apiKey = process.env.REACT_APP_API_KEY;
     // const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
     const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`;
-    const apiUrlGeocode = `http://api.openweathermap.org/geo/1.0/direct?q=${getLocation}&limit=1&appid=${apiKey}`;
+    const apiUrlGeocode = `https://api.openweathermap.org/geo/1.0/direct?q=${getLocation}&limit=1&appid=${apiKey}`;
     useEffect(() => {
         fetch(apiUrl)
             .then((res) => res.json())
@@ -88,7 +88,7 @@ function App() {
                             <h3 className="location">{location}</h3>
                             <h4>{apiData.current.weather[0].main}</h4>
                             <img
-                                src={`http://openweathermap.org/img/wn/${apiData.current.weather[0].icon}.png`}
+                                src={`https://openweathermap.org/img/wn/${apiData.current.weather[0].icon}.png`}
                                 alt="weather status icon"
                                 className="weather-icon"
                             />
@@ -138,7 +138,7 @@ function App() {
                                             {UnixToDay(apiData.daily[day].dt)}
                                         </h5>
                                         <img
-                                            src={`http://openweathermap.org/img/wn/${apiData.daily[day].weather[0].icon}.png`}
+                                            src={`https://openweathermap.org/img/wn/${apiData.daily[day].weather[0].icon}.png`}
                                             alt="weather status icon"
                                             className="weather-icon"
                                         />
