@@ -29,14 +29,6 @@ function App() {
             .then((data) => setGeoApiData(data));
     }, [apiUrlGeocode]);
 
-    // useEffect(() => {
-    //     navigator.geolocation.getCurrentPosition((position) => {
-    //         setLat(position.coords.latitude);
-    //         setLong(position.coords.longitude);
-    //     });
-
-    // }, [location]);
-
     const handleInput = (e) => {
         e.preventDefault();
         setGetLocation(e.target.value);
@@ -84,7 +76,7 @@ function App() {
                 <div className="current-weather-view">
                     {apiData.current ? (
                         <div className="main-info">
-                            <h2>Current Weather</h2>
+                            <h2>Today</h2>
                             <h3 className="location">{location}</h3>
                             <h4>{apiData.current.weather[0].main}</h4>
                             <img
@@ -105,18 +97,7 @@ function App() {
                                         )} °C`}
                                     </p>
                                 </div>
-                                {/* <div className="m2">
-                                    <p>
-                                        {`Min: ${kelvinToCelcius(
-                                            apiData.current.temp_min
-                                        )} °C`}
-                                    </p>
-                                    <p>
-                                        {`Max: ${kelvinToCelcius(
-                                            apiData.current.temp_max
-                                        )} °C`}
-                                    </p>
-                                </div> */}
+
                                 <div className="m3">
                                     <p>{`Pressure: ${apiData.current.pressure} hPa`}</p>
                                     <p>{`Humidity: ${apiData.current.humidity}%`}</p>
