@@ -22,6 +22,9 @@ h5 {
 }
 
 .form {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
     input {
         text-align: center;
         width: min(30vw, 10rem);
@@ -35,15 +38,12 @@ h5 {
     justify-content: center;
 
     .location {
-        display: inline;
         text-transform: capitalize;
         color: black;
-        padding: 1rem;
-        margin: 0.2rem;
-        border: 0.2rem solid red;
+        border: 0.15rem solid red;
         border-radius: 0.5rem;
         width: 20vw;
-        height: 5vh;
+        height: 3vh;
     }
     .main-info {
         display: flex;
